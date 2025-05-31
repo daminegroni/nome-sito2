@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Accesso protetto</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #login-screen {
+      text-align: center;
+      margin-top: 100px;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="login-screen">
+    <h1>🔒 Accesso Riservato</h1>
+    <input type="password" id="password" placeholder="Inserisci la password" />
+    <button onclick="checkPassword()">Accedi</button>
+    <p id="error" style="color: red;"></p>
+  </div>
+
+  <div id="main-content" style="display: none;">
+    <!-- Il vero sito viene caricato qui -->
+    <h1>Registratore Audio</h1>
+    <button id="startBtn">🎙️ Inizia Registrazione</button>
+    <button id="stopBtn" disabled>⏹️ Ferma</button>
+    <audio id="player" controls></audio>
+    <script src="script.js"></script>
+  </div>
+
+  <script>
+    const PASSWORD = "segretodamiano1023"; // CAMBIA QUESTA PASSWORD
+
+    function checkPassword() {
+      const input = document.getElementById('password').value;
+      if (input === PASSWORD) {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+      } else {
+        document.getElementById('error').innerText = "Password errata.";
+      }
+    }
+  </script>
+</body>
+</html>
+
